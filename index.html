@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Be My Valentine?</title>
+  <title>💌 💌 💌</title>
   <style>
     body {
       margin: 0;
@@ -27,7 +27,7 @@
     h1 {
       font-size: 2.2rem;
       margin-bottom: 1rem;
-      color: #e63946;
+      color: #ff6fae;
     }
 
     p {
@@ -39,22 +39,22 @@
     .buttons {
       display: flex;
       justify-content: center;
-      gap: 1rem;
+      gap: 2rem;
     }
 
     button {
       font-size: 1rem;
       padding: 0.7rem 1.5rem;
-      border-radius: 999px;
+      border-radius: 4px;
       border: none;
       cursor: pointer;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     #yesBtn {
-      background: #e63946;
+      background: #ff6fae;
       color: white;
-      box-shadow: 0 10px 20px rgba(230, 57, 70, 0.4);
+      box-shadow: 0 10px 20px rgba(255, 111, 174, 0.4);
     }
 
     #noBtn {
@@ -80,22 +80,38 @@
       0% { transform: scale(0.5); opacity: 0; }
       100% { transform: scale(1); opacity: 1; }
     }
+
+    .valentine-gif {
+      width: 100%;
+      max-width: 250px;
+      margin-bottom: 1.5rem;
+      border-radius: 12px;
+    }
+
+    .yes-gif {
+      width: 100%;
+      max-width: 280px;
+      margin: 1rem auto 0;
+      border-radius: 12px;
+    }
   </style>
 </head>
 <body>
   <div class="card">
-    <h1>Will you be my Valentine? 💖</h1>
-    <p>I was wondering if you'd like to spend Valentine’s Day with me.</p>
+<a href='https://postimg.cc/bDYFDC4G' target='_blank'><img src='https://i.postimg.cc/bDYFDC4G/mamegoma-gif.gif' border='0' alt='mamegoma-gif'></a>    <h1>hi stinky :)</h1>
+    <p>so... i wanted to ask you something.</p>
+    <p>will you be my valentine?</p>
 
     <div class="buttons" id="buttons">
-      <button id="yesBtn">Yes 💕</button>
-      <button id="noBtn">No 🙈</button>
+      <button id="yesBtn">YES</button>
+      <button id="noBtn">NO</button>
     </div>
 
     <div id="response" class="hidden">
+      <a href='https://postimg.cc/9Djbwg70' target='_blank'><img src='https://i.postimg.cc/9Djbwg70/seals-kiss.gif' border='0' alt='seals-kiss'></a>
       <div class="heart">💘💘💘</div>
-      <h1>Yay!!!</h1>
-      <p>You just made my heart very happy 💗</p>
+      <h1>yippee!!</h1>
+      <p>heheheh</p>
     </div>
   </div>
 
@@ -105,16 +121,29 @@
     const buttons = document.getElementById('buttons');
     const response = document.getElementById('response');
 
+    // YES button click shows response
     yesBtn.addEventListener('click', () => {
       buttons.classList.add('hidden');
       response.classList.remove('hidden');
     });
 
-    // playful "no" button dodge
-    noBtn.addEventListener('mouseenter', () => {
-      const x = Math.random() * 200 - 100;
-      const y = Math.random() * 200 - 100;
-      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    // NO button phrases
+    const noPhrases = ["are you sure?", "are you really sure?","are you really, really sure?", "be so fr", "bruh", "c'mon cutie don't do this to me", "ok wtf"];
+    let noClickCount = 0;
+
+    // NO button click behavior
+    let yesScale = 1;
+    noBtn.addEventListener('click', () => {
+      // scale YES button
+      yesScale += 0.2;
+      yesBtn.style.transform = `scale(${yesScale})`;
+      yesBtn.style.transition = 'transform 0.2s ease';
+
+      // change NO button text
+      if (noClickCount < noPhrases.length) {
+        noBtn.textContent = noPhrases[noClickCount];
+        noClickCount++;
+      }
     });
   </script>
 </body>
