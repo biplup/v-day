@@ -7,42 +7,46 @@
   <style>
     body {
       margin: 0;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: white; /* white background */
+      background: white;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      flex-direction: column; /* stack content vertically */
       text-align: center;
       padding: 2rem;
       box-sizing: border-box;
     }
 
+    /* container to constrain content width */
+    .content-wrapper {
+      max-width: 400px;
+      width: 100%;
+    }
+
     h1 {
       font-size: 2.2rem;
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
       color: #ff6fae;
     }
 
     p {
       font-size: 1.1rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       color: #444;
     }
 
     .buttons {
       display: flex;
       justify-content: center;
-      gap: 2rem; /* initial gap */
-      margin-bottom: 1.5rem;
-      transition: gap 0.3s ease; /* smooth increase */
+      gap: 1.5rem;
+      margin: 1.5rem 0;
     }
 
     button {
       font-size: 1rem;
       padding: 0.7rem 1.5rem;
-      border-radius: 4px;
+      border-radius: 6px;
       border: none;
       cursor: pointer;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -51,7 +55,7 @@
     #yesBtn {
       background: #ff6fae;
       color: white;
-      box-shadow: 0 10px 20px rgba(255, 111, 174, 0.4);
+      box-shadow: 0 8px 16px rgba(255, 111, 174, 0.3);
     }
 
     #noBtn {
@@ -82,7 +86,7 @@
     .valentine-gif {
       width: 100%;
       max-width: 250px;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       border-radius: 12px;
     }
 
@@ -95,35 +99,36 @@
   </style>
 </head>
 <body>
-  <!-- Intro content wrapped in question div -->
-  <div id="question">
-    <a href='https://postimg.cc/bDYFDC4G' target='_blank'>
-      <img src='https://i.postimg.cc/bDYFDC4G/mamegoma-gif.gif' border='0' alt='mamegoma-gif' class="valentine-gif">
-    </a>
-    <h1>hi stinky :)</h1>
-    <p>so... i wanted to ask you something.</p>
-    <p>will you be my valentine?</p>
+  <div class="content-wrapper">
+    <!-- Intro content wrapped in question div -->
+    <div id="question">
+      <a href='https://postimg.cc/bDYFDC4G' target='_blank'>
+        <img src='https://i.postimg.cc/bDYFDC4G/mamegoma-gif.gif' border='0' alt='mamegoma-gif' class="valentine-gif">
+      </a>
+      <h1>hi stinky :)</h1>
+      <p>so... i wanted to ask you something.</p>
+      <p>will you be my valentine?</p>
 
-    <div class="buttons" id="buttons">
-      <button id="yesBtn">YES</button>
-      <button id="noBtn">NO</button>
+      <div class="buttons" id="buttons">
+        <button id="yesBtn">YES</button>
+        <button id="noBtn">NO</button>
+      </div>
     </div>
-  </div>
 
-  <!-- Response shown after YES is clicked -->
-  <div id="response" class="hidden">
-    <a href='https://postimg.cc/9Djbwg70' target='_blank'>
-      <img src='https://i.postimg.cc/9Djbwg70/seals-kiss.gif' border='0' alt='seals-kiss' class="yes-gif">
-    </a>
-    <div class="heart">💘💘💘</div>
-    <h1>Yay!!!</h1>
-    <p>You just made my heart very happy 💗</p>
+    <!-- Response shown after YES is clicked -->
+    <div id="response" class="hidden">
+      <a href='https://postimg.cc/9Djbwg70' target='_blank'>
+        <img src='https://i.postimg.cc/9Djbwg70/seals-kiss.gif' border='0' alt='seals-kiss' class="yes-gif">
+      </a>
+      <div class="heart">💘💘💘</div>
+      <h1>Yay!!!</h1>
+      <p>You just made my heart very happy 💗</p>
+    </div>
   </div>
 
   <script>
     const yesBtn = document.getElementById('yesBtn');
     const noBtn = document.getElementById('noBtn');
-    const buttons = document.getElementById('buttons');
     const question = document.getElementById('question');
     const response = document.getElementById('response');
 
@@ -147,7 +152,6 @@
 
     // NO button click behavior
     let yesScale = 1;
-    let gapSize = 2; // initial gap in rem
     noBtn.addEventListener('click', () => {
       // scale YES button
       yesScale += 0.2;
@@ -159,10 +163,7 @@
         noBtn.textContent = noPhrases[noClickCount];
         noClickCount++;
       }
-
-      // increase gap between buttons
-      gapSize += 0.5; // increase by 0.5rem each click
-      buttons.style.gap = gapSize + 'rem';
+    });
   </script>
 </body>
 </html>
