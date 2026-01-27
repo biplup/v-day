@@ -34,8 +34,9 @@
     .buttons {
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      gap: 2rem; /* initial gap */
       margin-bottom: 1.5rem;
+      transition: gap 0.3s ease; /* smooth increase */
     }
 
     button {
@@ -115,13 +116,14 @@
       <img src='https://i.postimg.cc/9Djbwg70/seals-kiss.gif' border='0' alt='seals-kiss' class="yes-gif">
     </a>
     <div class="heart">💘💘💘</div>
-    <h1>yippee!!</h1>
-    <p>i knew you'd say yes ;)</p>
+    <h1>Yay!!!</h1>
+    <p>You just made my heart very happy 💗</p>
   </div>
 
   <script>
     const yesBtn = document.getElementById('yesBtn');
     const noBtn = document.getElementById('noBtn');
+    const buttons = document.getElementById('buttons');
     const question = document.getElementById('question');
     const response = document.getElementById('response');
 
@@ -145,6 +147,7 @@
 
     // NO button click behavior
     let yesScale = 1;
+    let gapSize = 2; // initial gap in rem
     noBtn.addEventListener('click', () => {
       // scale YES button
       yesScale += 0.2;
@@ -156,11 +159,10 @@
         noBtn.textContent = noPhrases[noClickCount];
         noClickCount++;
       }
-    });
-  </script>
-</body>
-</html>
 
+      // increase gap between buttons
+      gapSize += 0.5; // increase by 0.5rem each click
+      buttons.style.gap = gapSize + 'rem';
     });
   </script>
 </body>
