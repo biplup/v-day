@@ -1,4 +1,5 @@
 ok hi. i have no idea what i'm doing but. here we go :)
+edit: this is just a wip that i never finished, sorry!!! i also had no intention of anyone ever actually using this but i thank you for all of the feedback i receieved. will be sure to take it into consideration for any future projects :)
 
 coded while using https://onecompiler.com/html/  
 
